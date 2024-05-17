@@ -16,7 +16,7 @@
             <header class="d-flex">
                 <div id="contUser" class="col-4 d-flex gap-3">
                     <div class="col-2">
-                        <img class="UserPic mx-1 my-1" :src="contacts[0].avatar">
+                        <img class="UserPic mx-1 my-1" :src="contacts[activeContact].avatar">
                     </div>
                     <div class="col-10">
                         <h4 class="lh-lg"> {{user}} </h4>
@@ -24,10 +24,10 @@
                 </div>
                 <div id="contChatUser" class="col-8 d-flex gap-3">
                     <div class="col-1">
-                        <img class="UserPic mx-1 my-1" :src="contacts[0].avatar">
+                        <img class="UserPic mx-1 my-1" :src="contacts[activeContact].avatar">
                     </div>
                     <div>
-                        <h5 class="mb-0"> {{contacts[0].name}} </h5>
+                        <h5 class="mb-0"> {{contacts[activeContact].name}} </h5>
                         <span>Ultimo accesso oggi alle 12.00</span>
                     </div>
                 </div>
@@ -49,8 +49,8 @@
                         <div class="timeLeftCol d-flex col-1">12:00</div>
                     </div>
                 </div>
-                <div class="col-12 d-flex flex-column">
-                    <div id="chat" class="col-8 d-flex">
+                <div class="col-8 d-flex flex-column">
+                    <div id="chat" class="col-12 d-flex">
                         <div class="d-flex flex-column w-100">
                             <div v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
                                 <p :class="element.status," class="p-1">{{element.message}} </p>
@@ -66,8 +66,8 @@
                         </div>
                   
                     </div>
-                    <div class="myChatBar col-8 text-center p-2">
-                        <input @keyup.enter="invio()" v:model:="userInput" id="chatInput" type="search" style="width: 80%;">
+                    <div class="myChatBar col-12 text-center p-2">
+                        <input @keyup.enter="invio()" v-model:="userInput" id="chatInput" type="search" style="width: 80%;">
                     </div>
                 </div>
             </main>

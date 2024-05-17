@@ -7,7 +7,7 @@
 body {
     background: rgb(0,150,136);
     background: linear-gradient(180deg, rgba(0,150,136,1) 15%, rgba(218,219,210,1) 15%); 
-    height:100vh;
+    height:calc(100vh - 9rem);
     /* overflow: hidden; */
 }
 
@@ -17,7 +17,7 @@ main {
 
 .myContainer {
     width: 1200px;
-    height: calc(100vh - 10rem);
+    height: calc(100vh - 12rem);
     margin: 0 auto;
 }
 
@@ -54,6 +54,7 @@ main {
     background-image: url(https://w0.peakpx.com/wallpaper/744/548/HD-wallpaper-whatsapp-ma-doodle-pattern.jpg);
     background-color: #222;
     position: relative;
+    overflow: scroll;
 }
 
 #chatInput {
@@ -71,7 +72,7 @@ main {
 }
 
 .sent {
-    background-color: greenyellow;
+    background-color: #d5f9ba;
     width: fit-content;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -80,7 +81,7 @@ main {
 }
 
 .received{
-    background-color: gray;
+    background-color: #ffffff;
     width: fit-content;
     padding-left: 1rem;
     padding-right: 1rem;
