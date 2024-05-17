@@ -194,8 +194,8 @@ const { createApp } = Vue
             }
         },
         invio(){
-            this.contacts[this.activeContact].messages.push({message:this.userImput, status:"sent"});
-            this.userImput = ""
+            this.contacts[this.activeContact].messages.push({message:this.userInput, status:"sent"});
+            this.userInput = ""
         }
         // sentRecived(i){
         //     for (let index = 0; index < this.contacts[i].messages.length; index++) {
