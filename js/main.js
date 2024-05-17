@@ -172,6 +172,10 @@ const { createApp } = Vue
       }
     },
     methods: {
+        attivatore(){
+            this.activeContact = this.contacts[i];
+            return "active"
+        }
     },
     mounted() {
     }

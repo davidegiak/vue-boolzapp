@@ -35,7 +35,7 @@
                 <div class="col-4 bg-white p-2">
                     <div class="attivaNotifiche"></div>
                     <input type="search" style="width: 100%;" placeholder="cerca">
-                    <div v-for="element, i in contacts" class="d-flex bg-white mySideBar mb-2">
+                    <div @click="attivatore()" v-for="element, i in contacts" class="d-flex bg-white mySideBar mb-2">
                         <div class="mx-1 col-2">
                             <img class="UserPic mx-1 my-1" :src="contacts[i].avatar" alt="">
                         </div>
