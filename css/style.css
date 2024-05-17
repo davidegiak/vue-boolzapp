@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(0,150,136);
+    background: linear-gradient(180deg, rgba(0,150,136,1) 15%, rgba(218,219,210,1) 15%); 
+    height:100vh;
+    /* overflow: hidden; */
+}
+
+main {
+    height: 100%;
+}
+
+.myContainer {
+    width: 1200px;
+    height: calc(100vh - 10rem);
+    margin: 0 auto;
+}
+
+#contChatUser{
+    margin-top: 2rem;
+    background-color: #eaeaea;
+}
+
+#contUser{
+    border-right: 1px solid #222;
+    margin-top: 2rem;
+    background-color: #eaeaea;
+}
+
+
+
+.UserPic {
+    border-radius: 50%;
+}
+
+.timeLeftCol {
+    width: 36%;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.attivaNotifiche{
+    background-color: aqua;
+    height: 60px;
+}
+
+#chat {
+    height: 100%;
+    background-image: url(https://w0.peakpx.com/wallpaper/744/548/HD-wallpaper-whatsapp-ma-doodle-pattern.jpg);
+    background-color: #222;
+    position: relative;
+}
+
+#chatInput {
+    width: 80%;
+    height: 2rem;
+}
+
+.myChatBar {
+    background-color: #eaeaea;
+    align-self: baseline;
+    position: absolute;
+    bottom: 0;
+}
+
+.sent {
+    background-color: greenyellow;
+}
+
+.reciver {
+    background-color: #222;
+}
