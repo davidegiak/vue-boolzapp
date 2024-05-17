@@ -172,9 +172,33 @@ const { createApp } = Vue
       }
     },
     methods: {
-        attivatore(){
-            this.activeContact = this.contacts[i];
-            return "active"
+        attivatore(i){
+            this.activeContact = i;
+            console.log(this.activeContact);
+        },
+        changeActive(i){
+            if (this.activeContact == i) {
+                return "active"
+            }
+        },
+        getConversazione(){
+            return this.contacts[0].messages
+        },
+        stampaMex(i){
+            if (this.contacts[i].messages[i].status == "sent") {
+                return "justify-content-end"
+            }
+            else {
+                return ""
+            }
+        },
+        sentRecived(i){
+            if (this.contacts[i].messages[i].status == "sent") {
+                return "sent"
+            }
+            else if (this.contacts[i].messages[i].status == "recived") {
+                return "recived"
+            } 
         }
     },
     mounted() {
