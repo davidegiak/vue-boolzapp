@@ -192,15 +192,18 @@ const { createApp } = Vue
                 return ""
             }
         },
-        sentRecived(i){
-            if (this.contacts[i].messages[i].status == "sent") {
-                return "sent"
-            }
-            else if (this.contacts[i].messages[i].status == "recived") {
-                return "recived"
-            } 
-        }
+        // sentRecived(i){
+        //     for (let index = 0; index < this.contacts[i].messages.length; index++) {
+        //         if (this.contacts[i].messages[i].status == "sent") {
+        //             console.log("ciao");
+        //         }
+        //     }
+            // if (this.contacts[i].messages[i].status == "sent") {
+            //     return "sent"
+            // }
+            // else if (this.contacts[i].messages[i].status == "recived") {
+            //     return "recived"
+            // } 
+        
     },
-    mounted() {
-    }
   }).mount('#app')

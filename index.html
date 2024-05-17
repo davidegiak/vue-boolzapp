@@ -40,10 +40,10 @@
                     <input type="search" style="width: 100%;" placeholder="cerca">
                     <div @click="attivatore(i)" v-for="element, i in contacts" :class="changeActive(i)" class="d-flex bg-white mySideBar mb-2">
                         <div class="mx-1 col-2">
-                            <img class="UserPic mx-1 my-1" :src="contacts[i].avatar" alt="">
+                            <img class="UserPic mx-1 my-1" :src="element.avatar" alt="">
                         </div>
                         <div class="col-9 d-flex flex-column">
-                            <h5 class=""> {{contacts[i].name}} </h5> 
+                            <h5 class=""> {{element.name}} </h5> 
                             <p>Ultimo messaggio inviato</p>
                         </div>
                         <div class="timeLeftCol d-flex col-1">12:00</div>
@@ -52,8 +52,8 @@
                 <div class="col-12 d-flex flex-column">
                     <div id="chat" class="col-8 d-flex">
                         <div class="d-flex flex-column w-100">
-                            <div v-for="element,index in contacts[activeContact].messages" :class="stampaMex(index)" class="col-12 d-flex"> 
-                                <p :class="sentRecived(index)" class="p-1">{{element.message}} </p>
+                            <div v-for="element, index in contacts[activeContact].messages" :class="{'sent': element.status == "sent"}" class="col-12 d-flex"> 
+                                <p class="p-1">{{element.message}} </p>
                             </div>
                             <!-- <div class="mb-1 col-12 d-flex text-end">
                                 <div class="col-12 d-flex justify-content-end">
