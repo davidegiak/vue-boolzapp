@@ -168,7 +168,8 @@ const { createApp } = Vue
                 ],
             }
         ],
-        activeContact:0,   
+        activeContact:0,
+        userInput:"",
       }
     },
     methods: {
@@ -184,14 +185,18 @@ const { createApp } = Vue
         getConversazione(){
             return this.contacts[0].messages
         },
-        stampaMex(i){
-            if (this.contacts[i].messages[i].status == "sent") {
+        stampaMex(element,i){
+            if (element.status == "sent") {
                 return "justify-content-end"
             }
             else {
                 return ""
             }
         },
+        invio(){
+            this.contacts[this.activeContact].messages.push({message:this.userImput, status:"sent"});
+            this.userImput = ""
+        }
         // sentRecived(i){
         //     for (let index = 0; index < this.contacts[i].messages.length; index++) {
         //         if (this.contacts[i].messages[i].status == "sent") {

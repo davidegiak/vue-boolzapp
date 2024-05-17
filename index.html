@@ -52,8 +52,8 @@
                 <div class="col-12 d-flex flex-column">
                     <div id="chat" class="col-8 d-flex">
                         <div class="d-flex flex-column w-100">
-                            <div v-for="element, index in contacts[activeContact].messages" class="col-12 d-flex"> 
-                                <p :class="{`sent`: element.status == "sent"}" class="p-1">{{element.message}} </p>
+                            <div v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
+                                <p :class="element.status," class="p-1">{{element.message}} </p>
                             </div>
                             <!-- <div class="mb-1 col-12 d-flex text-end">
                                 <div class="col-12 d-flex justify-content-end">
@@ -67,7 +67,7 @@
                   
                     </div>
                     <div class="myChatBar col-8 text-center p-2">
-                        <input id="chatInput" type="search" style="width: 80%;">
+                        <input @keyup.enter="invio()" v:bind:="userInput" id="chatInput" type="search" style="width: 80%;">
                     </div>
                 </div>
             </main>
