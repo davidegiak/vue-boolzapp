@@ -4,11 +4,11 @@ const { createApp } = Vue
     data() {
       return {
         user:"Davidino",
-        avatar:``,
+        avatar:`./img/mine.jpg`,
         contacts: [
             {
                 name: 'Michele',
-                avatar: 'https://i.pravatar.cc/50',
+                avatar: './img/avatar_1.jpg',
                 visible: true,
                 messages: [
                     {
@@ -30,7 +30,7 @@ const { createApp } = Vue
             },
             {
                 name: 'Fabio',
-                avatar: 'https://i.pravatar.cc/50',
+                avatar: './img/avatar_2.jpg',
                 visible: true,
                 messages: [
                     {
@@ -52,7 +52,7 @@ const { createApp } = Vue
             },
             {
                 name: 'Samuele',
-                avatar:  'https://i.pravatar.cc/50',
+                avatar:  './img/avatar_3.jpg',
                 visible: true,
                 messages: [
                     {
@@ -74,7 +74,7 @@ const { createApp } = Vue
             },
             {
                 name: 'Alessandro B.',
-                avatar:  'https://i.pravatar.cc/50',
+                avatar:  './img/avatar_4.jpg',
                 visible: true,
                 messages: [
                     {
@@ -91,7 +91,7 @@ const { createApp } = Vue
             },
             {
                 name: 'Alessandro L.',
-                avatar:  'https://i.pravatar.cc/50',
+                avatar:  './img/avatar_5.jpg',
                 visible: true,
                 messages: [
                     {
@@ -108,7 +108,7 @@ const { createApp } = Vue
             },
             {
                 name: 'Claudia',
-                avatar:  'https://i.pravatar.cc/50',
+                avatar:  './img/avatar_6.jpg',
                 visible: true,
                 messages: [
                     {
@@ -130,7 +130,7 @@ const { createApp } = Vue
             },
             {
                 name: 'Federico',
-                avatar:  'https://i.pravatar.cc/50',
+                avatar:  './img/avatar_7.jpg',
                 visible: true,
                 messages: [
                     {
@@ -147,7 +147,7 @@ const { createApp } = Vue
             },
             {
                 name: 'Davide',
-                avatar:  'https://i.pravatar.cc/50',
+                avatar:  './img/avatar_8.jpg',
                 visible: true,
                 messages: [
                     {
@@ -167,18 +167,12 @@ const { createApp } = Vue
                     }
                 ],
             }
-        ]      
+        ],
+        activeContact:0,   
       }
     },
     methods: {
-        sentExtractor(index) {
-            if (this.contacts[index].messages[index].status == "sent") {
-             let ultimoMex = this.contacts[index].messages[index].message;
-             return ultimoMex
-            }
-        }
     },
     mounted() {
-        sentExtractor(index)
     }
   }).mount('#app')

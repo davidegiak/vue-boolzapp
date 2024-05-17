@@ -36,6 +36,7 @@ main {
 
 .UserPic {
     border-radius: 50%;
+    width: 100%;
 }
 
 .timeLeftCol {
@@ -50,7 +51,7 @@ main {
 }
 
 #chat {
-    height: 100%;
+    height: calc(100% - 3rem);
     background-image: url(https://w0.peakpx.com/wallpaper/744/548/HD-wallpaper-whatsapp-ma-doodle-pattern.jpg);
     background-color: #222;
     position: relative;
@@ -64,14 +65,22 @@ main {
 .myChatBar {
     background-color: #eaeaea;
     align-self: baseline;
-    position: absolute;
-    bottom: 0;
 }
 
 .sent {
     background-color: greenyellow;
+    width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
 }
 
-.reciver {
-    background-color: #222;
+.recived{
+    background-color: gray;
+    width: fit-content;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
 }
