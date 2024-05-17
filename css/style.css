@@ -40,7 +40,6 @@ main {
 }
 
 .timeLeftCol {
-    width: 36%;
     flex-direction: row;
     justify-content: end;
 }
@@ -65,6 +64,10 @@ main {
 .myChatBar {
     background-color: #eaeaea;
     align-self: baseline;
+}
+
+#sideBar{
+    overflow-y: scroll;
 }
 
 .sent {
