@@ -3,8 +3,8 @@ const { createApp } = Vue
   createApp({
     data() {
       return {
-        user:"Davidino",
-        avatar:`./img/mine.jpg`,
+        user:"Germana",
+        avatar:`./img/avatar_io.jpg`,
         contacts: [
             {
                 name: 'Michele',
@@ -170,6 +170,7 @@ const { createApp } = Vue
         ],
         activeContact:0,
         userInput:"",
+        contactInput:"",
       }
     },
     methods: {
@@ -182,9 +183,6 @@ const { createApp } = Vue
                 return "active"
             }
         },
-        getConversazione(){
-            return this.contacts[0].messages
-        },
         stampaMex(element,i){
             if (element.status == "sent") {
                 return "justify-content-end"
@@ -195,23 +193,20 @@ const { createApp } = Vue
         },
         invio(){
             this.contacts[this.activeContact].messages.push({message:this.userInput, status:"sent"});
-            this.userInput = ""
+            this.userInput = "",
             setTimeout(() => {
-                this.contacts[this.activeContact].messages.push({message:"bello bro!", status:"received"});
+                this.contacts[this.activeContact].messages.push({message:"bello bro!", status:"received"} || {message:"com'è ??", status:"received"});
             }, 1000);
-        }
-        // sentRecived(i){
-        //     for (let index = 0; index < this.contacts[i].messages.length; index++) {
-        //         if (this.contacts[i].messages[i].status == "sent") {
-        //             console.log("ciao");
-        //         }
-        //     }
-            // if (this.contacts[i].messages[i].status == "sent") {
-            //     return "sent"
-            // }
-            // else if (this.contacts[i].messages[i].status == "recived") {
-            //     return "recived"
-            // } 
-        
+        },
+        contactSerch(x) {
+            if (x.name.startsWith(this.contactInput)) {
+                return ""
+            }
+            else {
+                return "d-none"
+            }
+        },
     },
+    mounthed() {
+    }
   }).mount('#app')

@@ -11,19 +11,19 @@
 <body>
     <script src="https://unpkg.com/vue@3.4.27/dist/vue.global.js"></script>
     <div id="app">
-        <div class="myContainer mt-5 mb-5">
+        <div class="myContainer mb-5">
             <!-- HEADER -->
             <header class="d-flex">
                 <div id="contUser" class="col-4 d-flex gap-3">
                     <div class="col-2">
-                        <img class="UserPic mx-1 my-1" :src="contacts[activeContact].avatar">
+                        <img class="UserPic mx-1 my-1" :src="avatar">
                     </div>
                     <div class="col-10">
                         <h4 class="lh-lg"> {{user}} </h4>
                     </div>
                 </div>
                 <div id="contChatUser" class="col-8 d-flex gap-3">
-                    <div class="col-1">
+                    <div class="col-1 text-center">
                         <img class="UserPic mx-1 my-1" :src="contacts[activeContact].avatar">
                     </div>
                     <div>
@@ -35,10 +35,13 @@
             <!-- MAIN -->
             <main class="d-flex">
                 <!-- SIDEBAR CONTATTI -->
-                <div id="sideBar" class="col-4 bg-white p-2">
+                <div id="sideBar" class="col-4 bg-white">
                     <div class="attivaNotifiche"></div>
-                    <input type="search" style="width: 100%;" placeholder="cerca">
-                    <div @click="attivatore(i)" v-for="element, i in contacts" :class="changeActive(i)" class="d-flex bg-white mySideBar mb-2">
+                    <div class="d-flex mt-1 mb-1 ms-1 me-2">
+                        <button type="button">cerca</button>
+                        <input v-model:="contactInput" type="search" style="width: 100%;" placeholder="cerca">
+                    </div>
+                    <div @click="attivatore(i)" v-for="element, i in contacts" :class="changeActive(i), contactSerch(element)" class="d-flex mySideBar mb-2">
                         <div class="mx-2 col-1">
                             <img class="UserPic mx-1 my-1" :src="element.avatar">
                         </div>
@@ -53,16 +56,8 @@
                     <div id="chat" class="col-12 d-flex">
                         <div class="d-flex flex-column w-100">
                             <div v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
-                                <p :class="element.status," class="p-1">{{element.message}} </p>
+                                <p :class="element.status" class="badge text-black fw-normal p-1">{{element.message}} </p>
                             </div>
-                            <!-- <div class="mb-1 col-12 d-flex text-end">
-                                <div class="col-12 d-flex justify-content-end">
-                                    <p class="sent p-1">ciao</p>
-                                </div>
-                            </div>
-                            <div class="mb-1 col-12 text-end">
-                                <p class="recived p-1">ciao</p>
-                            </div> -->
                         </div>
                   
                     </div>

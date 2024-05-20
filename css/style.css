@@ -7,7 +7,7 @@
 body {
     background: rgb(0,150,136);
     background: linear-gradient(180deg, rgba(0,150,136,1) 15%, rgba(218,219,210,1) 15%); 
-    height:calc(100vh - 9rem);
+    height:100vh;
     /* overflow: hidden; */
 }
 
@@ -17,7 +17,7 @@ main {
 
 .myContainer {
     width: 1200px;
-    height: calc(100vh - 12rem);
+    height: calc(100vh - 8rem);
     margin: 0 auto;
 }
 
@@ -45,14 +45,13 @@ main {
 }
 
 .attivaNotifiche{
-    background-color: aqua;
+    background-color: #8edafc;
     height: 60px;
 }
 
 #chat {
     height: calc(100% - 3rem);
     background-image: url(https://w0.peakpx.com/wallpaper/744/548/HD-wallpaper-whatsapp-ma-doodle-pattern.jpg);
-    background-color: #222;
     position: relative;
     overflow: scroll;
 }
@@ -90,5 +89,5 @@ main {
 }
 
 .active{
-    border:1px solid #222;
+    background-color: #e9ebeb;
 }
