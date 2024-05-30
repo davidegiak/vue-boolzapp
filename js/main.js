@@ -192,20 +192,38 @@ const { createApp } = Vue
             }
         },
         invio(){
+            const miCopioLaConversazioneAttiva = this.activeContact;
             this.contacts[this.activeContact].messages.push({message:this.userInput, status:"sent"});
             this.userInput = "",
             setTimeout(() => {
-                this.contacts[this.activeContact].messages.push({message:"bello bro!", status:"received"} || {message:"com'è ??", status:"received"});
+                this.contacts[miCopioLaConversazioneAttiva].messages.push({message:"bello bro!", status:"received"} || {message:"com'è ??", status:"received"});
             }, 1000);
         },
-        contactSerch(x) {
-            if (x.name.startsWith(this.contactInput)) {
+        contactSerch(x,i) {
+            let j = this.contacts[i].name.toLowerCase();
+            if (j.startsWith(this.contactInput)) {
                 return ""
             }
             else {
                 return "d-none"
             }
         },
+        faiCose(i, x){
+            console.log(this.contacts[this.activeContact].messages[i], i);
+            let j = this.contacts[this.activeContact].messages[i];
+            delete j.message;
+            delete j.status;
+            delete j.date
+            delete x
+        },
+        dropDown(x) {
+            if (x.length > 0) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
     },
     mounthed() {
     }
