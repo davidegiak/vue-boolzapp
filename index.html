@@ -69,13 +69,12 @@
                 <div class="col-8 d-flex flex-column">
                     <div id="chat" class="col-12 d-flex">
                         <div class="d-flex flex-column w-100">
-                            <div v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
-                                <div v-show="dropDown(element.message)" :class="element.status" class="dropdown badge text-black fw-normal p-1">{{element.message}} 
+                            <div v-if='!undefined' v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
+                                <div :class="element.status" class="dropdown badge text-black fw-normal p-1">
+                                    {{element.message}} 
                                         <a href="#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                         <ul class="dropdown-menu">
-                                          <li><a @click="faiCose(index, element)"  class="dropdown-item" href="#">Action</a></li>
-                                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                          <li><a @click="faiCose(index, activeContact)"  class="dropdown-item" href="#">Action</a></li>
                                         </ul>
                                 </div>
                             </div>

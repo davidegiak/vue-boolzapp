@@ -171,6 +171,7 @@ const { createApp } = Vue
         activeContact:0,
         userInput:"",
         contactInput:"",
+        dropNascondi:""
       }
     },
     methods: {
@@ -183,7 +184,7 @@ const { createApp } = Vue
                 return "active"
             }
         },
-        stampaMex(element,i){
+        stampaMex(element){
             if (element.status == "sent") {
                 return "justify-content-end"
             }
@@ -209,22 +210,16 @@ const { createApp } = Vue
             }
         },
         faiCose(i, x){
-            console.log(this.contacts[this.activeContact].messages[i], i);
-            let j = this.contacts[this.activeContact].messages[i];
-            delete j.message;
-            delete j.status;
-            delete j.date
-            delete x
+            console.log("primo valore", x, "secondo valore", i);
+            return delete i
+            // let j = i
+            // delete j.message;
+            // delete j.status;
+            // delete j.date;
+            // delete x
         },
-        dropDown(x) {
-            if (x.length > 0) {
-                return true
-            }
-            else {
-                return false
-            }
-        }
     },
-    mounthed() {
+    mounted() {
+        window.vue = this
     }
   }).mount('#app')
