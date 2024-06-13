@@ -1,6 +1,6 @@
 const { createApp } = Vue
 
-  createApp({
+createApp({
     data() {
       return {
         user:"Germana",
@@ -211,15 +211,24 @@ const { createApp } = Vue
         },
         faiCose(i, x){
             console.log("primo valore", x, "secondo valore", i);
-            return delete i
-            // let j = i
-            // delete j.message;
-            // delete j.status;
-            // delete j.date;
-            // delete x
+            const removed = x.splice(i, 1);
+            return x
         },
+        ultimateMex(x) {
+            for (let i = x.length - 1; i > 0; i--) {
+                const mex = x[i];
+                // if (mex.status == 'received') {
+                //     return mex.message
+                // }
+                if (mex.message) {
+                    return mex.message
+                }
+                    
+            }
     },
+},
     mounted() {
         window.vue = this
+        console.log(this.contacts[this.activeContact].messages[1].message);
     }
-  }).mount('#app')
+}).mount('#app')

@@ -50,10 +50,9 @@
             <main class="d-flex">
                 <!-- SIDEBAR CONTATTI -->
                 <div id="sideBar" class="col-4 bg-white">
-                    <div class="attivaNotifiche"></div>
-                    <div class="d-flex mt-1 mb-1 ms-1 me-2">
-                        <button class="px-3" type="button"><i class="fa-solid fa-magnifying-glass myIconsColor"></i></button>
-                        <input v-model:="contactInput" type="search" style="width: 100%;" placeholder="cerca o inizia una nuova chat">
+                    <div class="d-flex mt-1 mb-1 ms-1 me-2 position-relative p-2">
+                        <button id="serchButton" class="px-3" type="button"><i class="fa-solid fa-magnifying-glass myIconsColor"></i></button>
+                        <input v-model:="contactInput" type="search" id="chatSerch" placeholder="cerca o inizia una nuova chat">
                     </div>
                     <div @click="attivatore(i)" v-for="element, i in contacts" :class="changeActive(i), contactSerch(element, i)" class="d-flex mySideBar mb-2">
                         <div class="mx-2 col-2">
@@ -61,7 +60,7 @@
                         </div>
                         <div class="col-8 d-flex flex-column justify-content-center">
                             <h5 class="m-0"> {{element.name}} </h5> 
-                            <p class="m-0 myUltimateMexColor">Ultimo messaggio inviato</p>
+                            <p class="m-0 myUltimateMexColor">{{ ultimateMex(element.messages) }}</p>
                         </div>
                         <div class="timeLeftCol d-flex align-items-center myUltimateMexColor">12:00</div>
                     </div>
@@ -72,9 +71,9 @@
                             <div v-if='!undefined' v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
                                 <div :class="element.status" class="dropdown badge text-black fw-normal p-1">
                                     {{element.message}} 
-                                        <a href="#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                                        <a href="#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgba(189, 195, 199, 1)"></a>
                                         <ul class="dropdown-menu">
-                                          <li><a @click="faiCose(index, activeContact)"  class="dropdown-item" href="#">Action</a></li>
+                                          <li><a @click="faiCose(index, contacts[activeContact].messages)"  class="dropdown-item" href="#">Action</a></li>
                                         </ul>
                                 </div>
                             </div>
