@@ -225,10 +225,16 @@ createApp({
                 }
                     
             }
-    },
+        },
+        newDate(x){
+            let newDate = new Date(x.date);
+            let h = newDate.getHours();
+            let m = newDate.getMinutes();
+            return h + ':' + m
+        },
 },
     mounted() {
-        window.vue = this
-        console.log(this.contacts[this.activeContact].messages[1].message);
+        window.vue = this;
+        // console.log(this.newDate());
     }
 }).mount('#app')

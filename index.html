@@ -62,7 +62,7 @@
                             <h5 class="m-0"> {{element.name}} </h5> 
                             <p class="m-0 myUltimateMexColor">{{ ultimateMex(element.messages) }}</p>
                         </div>
-                        <div class="timeLeftCol d-flex align-items-center myUltimateMexColor">12:00</div>
+                        <div class="timeLeftCol d-flex align-items-center myUltimateMexColor">{{newDate(element.messages[element.messages.length - 1])}}</div>
                     </div>
                 </div>
                 <div class="col-8 d-flex flex-column">
@@ -71,6 +71,7 @@
                             <div v-if='!undefined' v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
                                 <div :class="element.status" class="dropdown badge text-black fw-normal p-1">
                                     {{element.message}} 
+                                    <span class="mexHours">{{newDate(element)}} </span>
                                         <a href="#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgba(189, 195, 199, 1)"></a>
                                         <ul class="dropdown-menu">
                                           <li><a @click="faiCose(index, contacts[activeContact].messages)"  class="dropdown-item" href="#">Action</a></li>

@@ -24,12 +24,14 @@ main {
 #contChatUser{
     margin-top: 2rem;
     background-color: #eaeaea;
+    border-radius: 0 20px 0 0;
 }
 
 #contUser{
     border-right: 1px solid #222;
     margin-top: 2rem;
     background-color: #eaeaea;
+    border-radius: 20px 0 0;
 }
 
 
@@ -68,10 +70,12 @@ main {
 .myChatBar {
     background-color: #eaeaea;
     align-self: baseline;
+    border-radius: 0 0 20px 0;
 }
 
 #sideBar{
     overflow-y: scroll;
+    border-radius: 0 0 0 20px;
 }
 
 #chatSerch{
@@ -123,4 +127,7 @@ main {
 
 .myUltimateAccessColor {
     color: #8993a2;
+}
+.mexHours{
+    font-size: 0.5rem;
 }
