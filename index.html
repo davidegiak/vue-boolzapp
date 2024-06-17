@@ -36,7 +36,7 @@
                         </div>
                         <div class="d-flex justify-content-center flex-column">
                             <h5 class="mb-0"> {{contacts[activeContact].name}} </h5>
-                            <span class="myUltimateAccessColor">Ultimo accesso oggi alle 12.00</span>
+                            <span class="myUltimateAccessColor">Ultimo accesso oggi alle {{date(contacts[activeContact].messages[contacts[activeContact].messages.length - 1])}} </span>
                         </div>
                     </div>
                     <div class="d-flex align-items-center gap-3 me-3">
@@ -49,7 +49,7 @@
             <!-- MAIN -->
             <main class="d-flex">
                 <!-- SIDEBAR CONTATTI -->
-                <div id="sideBar" class="col-4 bg-white">
+                <div @click="isModalOpen = false" id="sideBar" class="col-4 bg-white">
                     <div class="d-flex mt-1 mb-1 ms-1 me-2 position-relative p-2">
                         <button id="serchButton" class="px-3" type="button"><i class="fa-solid fa-magnifying-glass myIconsColor"></i></button>
                         <input v-model:="contactInput" type="search" id="chatSerch" placeholder="cerca o inizia una nuova chat">
@@ -62,16 +62,17 @@
                             <h5 class="m-0"> {{element.name}} </h5> 
                             <p class="m-0 myUltimateMexColor">{{ ultimateMex(element.messages) }}</p>
                         </div>
-                        <div class="timeLeftCol d-flex align-items-center myUltimateMexColor">{{newDate(element.messages[element.messages.length - 1])}}</div>
+                        <div class="timeLeftCol d-flex align-items-center myUltimateMexColor">{{date(element.messages[element.messages.length - 1])}}</div>
                     </div>
                 </div>
                 <div class="col-8 d-flex flex-column">
                     <div id="chat" class="col-12 d-flex">
-                        <div class="d-flex flex-column w-100">
+                        <div @click="isModalOpen = false" class="d-flex flex-column w-100">
                             <div v-if='!undefined' v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
                                 <div :class="element.status" class="dropdown badge text-black fw-normal p-1">
                                     {{element.message}} 
-                                    <span class="mexHours">{{newDate(element)}} </span>
+                                    <!-- <span v-if="stampaMex(element)" class="mexHours">{{newDate()}} </span> -->
+                                    <span class="mexHours">{{date(element)}} </span>
                                         <a href="#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgba(189, 195, 199, 1)"></a>
                                         <ul class="dropdown-menu">
                                           <li><a @click="faiCose(index, contacts[activeContact].messages)"  class="dropdown-item" href="#">Action</a></li>
@@ -82,7 +83,12 @@
                   
                     </div>
                     <div class="myChatBar col-12 d-flex justify-content-around justify-content-center align-items-center p-2">
-                        <i class="fa-regular fa-face-smile myIconsColor"></i>
+                        <i @click="isModalOpen ? isModalOpen=false : isModalOpen=true" class="fa-regular fa-face-smile myIconsColor"></i>
+                        <div v-if="isModalOpen == true" class="emoji">
+                            <ul class="d-flex gap-2">
+                                <li @click="emojiMethod(emoji)" v-for="emoji in emojis" v-html="emoji"></li>
+                            </ul>
+                        </div>
                         <input @keyup.enter="invio()" v-model:="userInput" id="chatInput" type="search" style="width: 80%;">
                         <i class="fa-solid fa-microphone myIconsColor"></i>
                     </div>
@@ -92,6 +98,8 @@
     </div>
     <script src="./js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/vue-emoji-picker/dist/vue-emoji-picker.js"></script>
 </body>
 </html>
+
 

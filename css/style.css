@@ -71,6 +71,7 @@ main {
     background-color: #eaeaea;
     align-self: baseline;
     border-radius: 0 0 20px 0;
+    position: relative;
 }
 
 #sideBar{
@@ -130,4 +131,24 @@ main {
 }
 .mexHours{
     font-size: 0.5rem;
+}
+.emoji{
+    width: 20rem;
+    background-color: white;
+    height: 20rem;
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    padding: 0.5rem;
+    border: 1px solid #222;
+}
+.fa-face-smile{
+    cursor: pointer;
+}
+ul {
+    list-style: none;
+    flex-wrap: wrap;
+}
+li {
+    cursor: pointer;
 }
