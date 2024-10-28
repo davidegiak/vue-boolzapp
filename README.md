@@ -2,7 +2,7 @@
 
 ## Description
 
-I create a message web app whith a whatsapp type layout, in **Vue.Js**, **Bootstrap5.3**. Icons are from **Font Awesome**. 
+I created a message web app whith a whatsapp type layout, in **Vue.Js**, **Bootstrap5.3**, **Html** & **CSS**. Icons are from **Font Awesome**. 
 You can search a contact, send a message and delete it. The contact will answer you whith a preset message.
 Messages will be deleted at the refresh of the page.
 
