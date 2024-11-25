@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-4 d-flex justify-content-center align-items-center gap-3">
-                        <i class="fa-solid fa-circle-notch myIconsColor"></i>
+                        <i @click="reload()" class="fa-solid fa-circle-notch myIconsColor"></i>
                         <i class="fa-solid fa-message myIconsColor"></i>
                         <i class="fa-solid fa-ellipsis-vertical myIconsColor"></i>
                     </div>
@@ -49,7 +49,7 @@
             <!-- MAIN -->
             <main class="d-flex">
                 <!-- SIDEBAR CONTATTI -->
-                <div @click="isModalOpen = false" id="sideBar" class="col-4 bg-white">
+                <div @click="isModalOpen = false, emojisBtn = '' " id="sideBar" class="col-4 bg-white">
                     <div class="d-flex mt-1 mb-1 ms-1 me-2 position-relative p-2">
                         <button id="serchButton" class="px-3" type="button"><i class="fa-solid fa-magnifying-glass myIconsColor"></i></button>
                         <input v-model:="contactInput" type="search" id="chatSerch" placeholder="cerca o inizia una nuova chat">
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-8 d-flex flex-column">
                     <div id="chat" class="col-12 d-flex">
-                        <div @click="isModalOpen = false" class="d-flex flex-column w-100">
+                        <div @click="isModalOpen = false, emojisBtn='' " class="d-flex flex-column w-100">
                             <div v-if='!undefined' v-for="element, index in contacts[activeContact].messages" :class="stampaMex(element)" class="col-12 d-flex"> 
                                 <div :class="element.status" class="dropdown badge text-black fw-normal p-1">
                                     {{element.message}} 
@@ -75,7 +75,8 @@
                                     <span class="mexHours">{{date(element)}} </span>
                                         <a href="#" class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:rgba(189, 195, 199, 1)"></a>
                                         <ul class="dropdown-menu">
-                                          <li><a @click="faiCose(index, contacts[activeContact].messages)"  class="dropdown-item" href="#">Action</a></li>
+                                          <li><a @click="faiCose(index, contacts[activeContact].messages)"  class="dropdown-item" href="#">cancella <i class="fa fa-trash" aria-hidden="true"></i> </a></li>
+                                          <li v-if="contacts[activeContact].messages[index].status == 'sent' "><a @click="modifica(index, contacts[activeContact].messages[index])"  class="dropdown-item" href="#">modifica <i class="fa fa-pencil" aria-hidden="true"></i></a></li>
                                         </ul>
                                 </div>
                             </div>
@@ -83,7 +84,7 @@
                   
                     </div>
                     <div class="myChatBar col-12 d-flex justify-content-around justify-content-center align-items-center p-2">
-                        <i @click="isModalOpen ? isModalOpen=false : isModalOpen=true" class="fa-regular fa-face-smile myIconsColor"></i>
+                        <i @click="isModalOpen ? isModalOpen=false : isModalOpen=true, isModalOpen ? emojisBtn = 'text-warning' : emojisBtn = '' " class="fa-solid fa-face-smile myIconsColor" :class="emojisBtn"></i>
                         <div v-if="isModalOpen == true" class="emoji">
                             <ul class="d-flex gap-2">
                                 <li @click="emojiMethod(emoji)" v-for="emoji in emojis" v-html="emoji"></li>
@@ -91,6 +92,7 @@
                         </div>
                         <input @keyup.enter="invio()" v-model:="userInput" id="chatInput" type="search" style="width: 80%;">
                         <i class="fa-solid fa-microphone myIconsColor"></i>
+                        <!-- <audio src="" controls></audio> -->
                     </div>
                 </div>
             </main>

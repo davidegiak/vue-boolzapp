@@ -166,17 +166,17 @@ createApp({
             contactInput: "",
             dropNascondi: "",
             responses: [{
-                    message: "bello bro!",
+                    message: "Ok!",
                 },
-                {
-                    message: "com'è??",
-                },
-                {
-                    message: "che fai??",
-                },
-                {
-                    message: "sei a casa?",
-                },
+                // {
+                //     message: "com'è??",
+                // },
+                // {
+                //     message: "che fai??",
+                // },
+                // {
+                //     message: "sei a casa?",
+                // },
             ],
             isModalOpen: false,
             emojis: [
@@ -191,13 +191,18 @@ createApp({
                 '👍',
                 '🙌',
                 '💕',
-            ]
+                '🎮',
+                '🍕',
+                '🍃',
+            ],
+            emojisBtn: '',
+            modificando: []
         }
     },
     methods: {
         attivatore(i) {
             this.activeContact = i;
-            console.log(this.activeContact);
+            // console.log(this.activeContact);
         },
         changeActive(i) {
             if (this.activeContact == i) {
@@ -220,9 +225,19 @@ createApp({
             }
         },
         faiCose(i, x) {
-            console.log("primo valore", x, "secondo valore", i);
+            // console.log("primo valore", x, "secondo valore", i);
             const removed = x.splice(i, 1);
             return x
+        },
+        modifica(i, x) {
+            // console.log("primo valore", x, "secondo valore", i);
+            // const modifica = x.splice(i, 1);
+            // return x
+            this.userInput = x.message;
+            this.modificando.push(i, x);
+            console.log(this.modificando);
+
+            
         },
         ultimateMex(x) {
             for (let i = x.length - 1; i > 0; i--) {
@@ -249,24 +264,33 @@ createApp({
                 return h + ':' + m
             }
         },
-        getRandomInt(max) {
-            return Math.floor(Math.random() * max);
-        },
+        // getRandomInt(max) {
+        //     return Math.floor(Math.random() * max);
+        // },
         invio() {
             const miCopioLaConversazioneAttiva = this.activeContact;
-            this.contacts[this.activeContact].messages.push({
-                message: this.userInput,
-                status: "sent"
-            });
-            let random = this.getRandomInt(4);
-            let resp = this.responses[random];
-            this.userInput = "",
-                setTimeout(() => {
-                    this.contacts[miCopioLaConversazioneAttiva].messages.push({
-                        message: resp.message,
-                        status: "received"
-                    });
-                }, 1000);
+            if (this.modificando.length > 0) {
+                this.contacts[this.activeContact].messages[this.modificando[0]].message = this.userInput;
+                console.log(this.contacts[this.activeContact].messages[this.modificando[0]].message);
+                this.modificando = [];
+                this.userInput = '';
+                
+            }
+            else {
+                this.contacts[this.activeContact].messages.push({
+                    message: this.userInput,
+                    status: "sent"
+                });
+                // let random = this.getRandomInt(4);
+                let resp = this.responses[0];
+                this.userInput = "",
+                    setTimeout(() => {
+                        this.contacts[miCopioLaConversazioneAttiva].messages.push({
+                            message: resp.message,
+                            status: "received"
+                        });
+                    }, 1000);
+            }
         },
         emojiMethod(x){
             this.userInput = this.userInput + x
@@ -274,5 +298,18 @@ createApp({
     },
     mounted() {
         window.vue = this;
-    }
+    },
+    // bhoo(){
+    //     navigator.mediaDevices.getUserMedia({audio:true})
+    // .then(stream => {
+    //     rec = new MediaRecorder(stream);
+    //     rec.ondataavailable = e => {
+    //         audioChunks.push(e.data);
+    //         if (rec.state == "inactive"){
+    //            // Use blob to create a new Object URL and playback/download
+    //         }
+    //     }
+    // })
+    // .catch(e=>console.log(e));
+    // }
 }).mount('#app')
