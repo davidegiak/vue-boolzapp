@@ -6,5 +6,4 @@ I created a message web app whith a whatsapp type layout, in **Vue.Js**, **Boots
 You can search a contact, send a message and delete it. The contact will answer you whith a preset message.
 Messages will be deleted at the refresh of the page.
 
-
-<img width="1279" alt="boolzap" src="https://github.com/user-attachments/assets/1666eedf-f4c1-449d-b502-bade74f03333">
+![Screenshot 2024-11-25 124817](https://github.com/user-attachments/assets/92a3a787-02bb-4bfb-b623-da33193e143e)
